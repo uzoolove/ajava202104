@@ -43,7 +43,6 @@
       - Select default JDK Location 항목에서 JAVA_HOME 선택
       - SDK Components Setup 항목에서 Android SDK Location을 C:\ajava\adk로 지정
       - 나머지는 모두 기본 옵션으로 선택 후 완료
-
 ## 소스코드 공유(본인의 소스코드를 강사에게 공유하고 싶을때)
 1. [Code Share](https://codeshare.io/) 접속(마우스 오른쪽 버튼 > 새 탭에서 링크 열기)
 2. Share Code Now 클릭
