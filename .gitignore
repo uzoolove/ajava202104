@@ -29,3 +29,5 @@ hs_err_pid*
 .project
 
 # android
+android-workspace/
+!app/src/main/
