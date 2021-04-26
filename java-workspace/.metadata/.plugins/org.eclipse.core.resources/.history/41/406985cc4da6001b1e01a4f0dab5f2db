@@ -1,0 +1,16 @@
+package ch04;
+
+public class IfSwitchTest {
+	public static void main(String[] args) {
+		byte kor = 90;
+		int eng = 80;
+		long math = 59;
+		
+		long sum = kor + eng + math;
+		double avg = sum / 3.0;
+		
+		// + -> 결합연산자(문자열과 함께 사용)
+		System.out.println("총점: " + sum);
+		System.out.println("평균: " + avg);
+	}
+}

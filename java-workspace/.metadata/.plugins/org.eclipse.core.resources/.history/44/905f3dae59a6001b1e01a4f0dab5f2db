@@ -1,0 +1,12 @@
+package ch03;
+
+public class ScoreTest {
+	public static void main(String[] args) {
+		Score kim = new Score();
+		kim.kor = 100;
+		kim.eng = 90;
+		kim.math = 72;
+		kim.sum = kim.kor + kim.eng + kim.math;
+		kim.avg = kim.sum / 3.0;
+	}
+}

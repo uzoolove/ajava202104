@@ -1,0 +1,11 @@
+package ch04;
+
+public class IfSwitchTest {
+	public static void main(String[] args) {
+		byte kor = 90;
+		int eng = 80;
+		long math = 59;
+		
+		int sum = kor + eng + math;
+	}
+}

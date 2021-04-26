@@ -1,0 +1,18 @@
+package ch04;
+
+public class OperatorTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		byte b = 100;
+		short s = 30000;
+		int i = 200000000;
+		long l = 23423543425346345;
+		float f = 23453452345345.6785678;
+		double d = 23453455463456.34523452345;
+		char c1 = '안';
+		caar c2 = 'a';
+		
+	}
+
+}

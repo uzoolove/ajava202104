@@ -1,0 +1,12 @@
+package ch04;
+
+public class WhileForTest {
+	public static void main(String[] args) {
+		// 1~100 합계
+		int sum = 0;
+		int n = 1;
+		while(n <= 100) {
+			sum += n;
+		}
+	}
+}
