@@ -28,7 +28,8 @@
     * Installation Folder: C:\ajava\eclipse 지정 후 INSTALL 선택
     * 설정
       - 최초 실행 시 Select a directory as workspace 선택 항목에서 C:\ajava\java-workspace 입력, Use this as the default and do not ask again 선택박스 선택
-      - 이클립스 실행 후 
+      - 이클립스 실행 후 환경 설정
+        - Window > Preferences > General > Appearance > Colors and Fonts > Basic > Text Font 선택 후 Edit로 원하는 글꼴 및 크기 선택
 3. Android Studio 설치 [Download Pages](https://developer.android.com/studio)(마우스 오른쪽 버튼 > 새 탭에서 링크 열기)
     * 다운로드 받은 파일 실행해서 설치
     * 설치 중 경로는 C:\ajava\Android Studio로 지정, 나머지는 기본옵션 그대로 설치
