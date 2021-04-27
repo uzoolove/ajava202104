@@ -38,13 +38,24 @@ public class OperatorTest {
 
 }
 
-
-
-
-
-
-
-
+//class System{
+//	static PrintStream out;
+//}
+//
+//class PrintStream{
+//	public void println(int msg) {
+//		// 표준 출력장치에 msg를 출력하고 줄바꿈 기호 추가
+//	}
+//	public void println(long msg) {
+//		// 표준 출력장치에 msg를 출력하고 줄바꿈 기호 추가
+//	}
+//	public void println(double msg) {
+//		// 표준 출력장치에 msg를 출력하고 줄바꿈 기호 추가
+//	}
+//	public void println(boolean msg) {
+//		// 표준 출력장치에 msg를 출력하고 줄바꿈 기호 추가
+//	}
+//}
 
 
 
