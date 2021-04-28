@@ -5,10 +5,12 @@ public class CarTest {
 		Car c1 = new Car();
 		Car c2 = new OpenCar();
 		Car c3 = new CustomCar();
+		Car c4 = new CustomCar2();
 		
 		cityTour(c1);
 		cityTour(c2);
 		cityTour(c3);
+		cityTour(c4);
 	}
 	static void cityTour(Car c) {
 		c.start();
