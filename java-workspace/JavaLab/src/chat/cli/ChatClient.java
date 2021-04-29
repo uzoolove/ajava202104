@@ -1,6 +1,7 @@
 package chat.cli;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -18,7 +19,7 @@ public class ChatClient {
 	private void onCreate() {
 		final String SERVER = "localhost:1234";
 //		final String SERVER = "210.106.28.83:1234";
-		final String NICKNAME = "김철수";
+		final String NICKNAME = "이영희";
 		connect(SERVER, NICKNAME);
 	}
 
@@ -43,17 +44,28 @@ public class ChatClient {
 			// 키보드에서 입력한 문자를 꺼내기 위한 입력 스트림 생성
 			key = new BufferedReader(new InputStreamReader(System.in));
 			
-			String readData = "";
-			// 키보드에서 입력한 데이터를 출력 스트림으로 전송
-			while((readData = key.readLine()) != null) {
-				sendMsg(readData);
-				
-				// 서버로부터 받은 데이터 출력
-				String recvData = "";
-				recvData = in.readLine();
+			// 로그인 요청
+			sendMsg("login " + nickname);
+			
+			new Thread() {
+				public void run() {
+					String readData = "";
+					try {
+						// 키보드에서 입력한 데이터를 출력 스트림으로 전송
+						while((readData = key.readLine()) != null) {
+							sendMsg(readData);
+						}
+					}catch(IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}.start();
+							
+			// 서버로부터 받은 데이터 출력
+			String recvData = "";
+			while((recvData = in.readLine()) != null) {
 				System.out.println(recvData);
 			}
-			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
