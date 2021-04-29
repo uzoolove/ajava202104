@@ -1,5 +1,6 @@
 package chat.gui;
 
+import java.awt.BorderLayout;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 public class ChatClient {
 	private Socket s;
@@ -47,6 +49,21 @@ public class ChatClient {
 	private void setView() {
 		frame = new JFrame("멀티챗");
 		
+		msgOut = new JTextArea("멀티챗에 오신걸 환영합니다.\n", 10, 30);
+		msgOut.setLineWrap(true);
+		msgOut.setEditable(false);
+		scroller = new JScrollPane(msgOut
+					, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED
+					, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		
+		msgInput = new JTextField(35);
+		sendBtn = new JButton("전송");
+		msgPanel = new JPanel(new BorderLayout());
+		msgPanel.add(msgInput, BorderLayout.CENTER);
+		msgPanel.add(sendBtn, BorderLayout.EAST);
+		
+		frame.add(scroller, BorderLayout.CENTER);
+		frame.add(msgPanel, BorderLayout.SOUTH);
 		frame.setSize(400, 300);
 		frame.setLocation(600, 300);
 		frame.setVisible(true);
