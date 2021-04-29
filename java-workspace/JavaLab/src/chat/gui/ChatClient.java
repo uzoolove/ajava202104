@@ -1,8 +1,9 @@
 package chat.gui;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -14,13 +15,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
 
 public class ChatClient {
 	private Socket s;
 	private BufferedReader in;		// 서버로부터 읽는다.
 	private PrintWriter out;	// 서버로 보낸다.
-	private BufferedReader key;	// 키보드로부터 읽는다.
 	
 	// 윈도우창
 	private JFrame frame;
@@ -67,11 +66,51 @@ public class ChatClient {
 		frame.setSize(400, 300);
 		frame.setLocation(600, 300);
 		frame.setVisible(true);
+		msgInput.requestFocus();
 	}
 	
 	// 이벤트 등록
 	private void setEvent() {
+		// 닫기 버튼 클릭
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// 전송 버튼 클릭
+		/*
+		class MouseEventListener implements MouseListener{
+			public void mouseClicked(MouseEvent e) {
+				System.out.println("클릭.");
+			}
+			public void mousePressed(MouseEvent e) {
+				System.out.println("누름.");
+			}
+			public void mouseReleased(MouseEvent e) {
+				System.out.println("뗌.");
+			}
+			public void mouseEntered(MouseEvent e) {
+				System.out.println("진입.");
+			}
+			public void mouseExited(MouseEvent e) {
+				System.out.println("나감");
+			}			
+		}		
+		sendBtn.addMouseListener(new MouseEventListener());
+		*/
 		
+		sendBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String msg = msgInput.getText();
+				sendMsg(msg);
+				msgInput.setText("");
+				msgInput.requestFocus();
+			}
+		});
+		msgInput.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String msg = msgInput.getText();
+				sendMsg(msg);
+				msgInput.setText("");
+				msgInput.requestFocus();
+			}
+		});
 	}
 
 	// 서버에 메세지 전송
@@ -92,30 +131,14 @@ public class ChatClient {
 			in = new BufferedReader(new InputStreamReader(s.getInputStream(), "UTF-8"));
 			out = new PrintWriter(new OutputStreamWriter(s.getOutputStream(), "UTF-8"), true);// auto flush			
 			
-			// 키보드에서 입력한 문자를 꺼내기 위한 입력 스트림 생성
-			key = new BufferedReader(new InputStreamReader(System.in));
-			
 			// 로그인 요청
-			sendMsg("login " + nickname);
-			
-			new Thread() {
-				public void run() {
-					String readData = "";
-					try {
-						// 키보드에서 입력한 데이터를 출력 스트림으로 전송
-						while((readData = key.readLine()) != null) {
-							sendMsg(readData);
-						}
-					}catch(IOException e) {
-						e.printStackTrace();
-					}
-				}
-			}.start();
+			sendMsg("login " + nickname);			
 							
 			// 서버로부터 받은 데이터 출력
 			String recvData = "";
 			while((recvData = in.readLine()) != null) {
-				System.out.println(recvData);
+				msgOut.append(recvData + "\n");
+				msgOut.setCaretPosition(msgOut.getDocument().getLength());
 			}
 		}catch(Exception e){
 			e.printStackTrace();
