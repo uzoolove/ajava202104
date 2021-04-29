@@ -14,8 +14,8 @@ public class FileCopyPerformance {
 	    long start = System.currentTimeMillis();
 		
 //		copyFile(org, dest);
-		copyFileUseBuffer(org, dest);
-//		copyFileCustomBuffer(org, dest);
+//		copyFileUseBuffer(org, dest);
+		copyFileCustomBuffer(org, dest);
 	
 		long finish = System.currentTimeMillis();
 		System.out.println("소요시간: " + (finish-start) + "ms");
@@ -72,14 +72,15 @@ public class FileCopyPerformance {
 	 * @param dest 복사 파일명
 	 */
 	private static void copyFileCustomBuffer(String org, String dest) {
-		int readData = 0;
+		int readSize = 0;
 		FileInputStream fis = null;
 		FileOutputStream fos = null;
 		try {
 			fis = new FileInputStream(org);
 			fos = new FileOutputStream(dest);
-			while((readData = fis.read()) != -1) {
-				fos.write(readData);
+			byte[] buff = new byte[1024*8];
+			while((readSize = fis.read(buff)) != -1) {
+				fos.write(buff, 0, readSize);// 0.2초
 			}
 			fis.close();
 			fos.close();
