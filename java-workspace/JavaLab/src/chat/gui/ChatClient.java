@@ -38,8 +38,8 @@ public class ChatClient {
 		setView();
 		setEvent();
 		
-		final String SERVER = "localhost:1234";
-//		final String SERVER = "210.106.28.83:1234";
+//		final String SERVER = "localhost:1234";
+		final String SERVER = "15.164.178.255:1234";
 		final String NICKNAME = "이영희";
 		connect(SERVER, NICKNAME);
 	}
