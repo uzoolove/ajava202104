@@ -60,6 +60,18 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        sendMsg("자리비움...");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        sendMsg("돌아옴...");
+    }
+
     // 화면 구성
     private void setView() {
         msgOut = findViewById(R.id.msgOut);
